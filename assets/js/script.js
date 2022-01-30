@@ -8,17 +8,30 @@ var todayWindEl = document.querySelector("#today-wind");
 var todayHumidityEl = document.querySelector("#today-humidity");
 var todayUvEl = document.querySelector("#today-uv"); 
 
+var getForecast = function(lat, lon) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,current,minutely&units=imperial&appid=ee0df90445baa29f925de9ef4662322f"
+
+    fetch(apiUrl).then(function(response){
+        response.json().then(function(data){
+            console.log(data);
+        })
+    })
+}
+
 var getTodayWeather = function(city) {
     searchedCityEl.innerHTML = city;
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=ee0df90445baa29f925de9ef4662322f"
 
     fetch(apiUrl).then(function(response) {
         response.json().then(function(data){
-            console.log(data);
             todayTempEl.innerHTML = "Temperature: " + data.main.temp + "*F";
             todayWindEl.innerHTML = "Wind: " + data.wind.speed + " MPH";
             todayHumidityEl.innerHTML = "Humidity: " + data.main.humidity + "%";
             todayUvEl.innerHTML = "UV Index: "  
+            var lon = data.coord.lon
+            var lat = data.coord.lat
+            getForecast(lat, lon);
+        
         })
     });
 };
