@@ -4,8 +4,69 @@ header {
     text-align: center;
 }
 
+#main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .forecast-icon {
     max-height:  35px;
     max-width: 35px;
 
+}
+
+#city-search  {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#search-for-city, #search-city, #city-search-button, #cities-list {
+    width: 100%;
+    padding:  8px;
+    margin-bottom: 10px;
+}
+
+#cities-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.city-but {
+    width: 100%;
+    padding-top: 8x;
+    margin: 1px;
+    justify-content: space-between;
+}
+
+button {
+    margin: 10px;
+    width: 100%;
+}
+
+#city-search-button {
+    margin: 0px;
+}
+
+#5-day-cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.forecast-card {
+    max-width: 18%;
+    min-width: 120px;
+    background-color: #24454B;
+    color: cornsilk;
+    margin: 5px;
+}
+
+@media screen and (max-width: 768px) {
+
+    #city-search, #weather-section {
+        width: 100%;
+    }
+
+    
+    
 }

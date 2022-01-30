@@ -29,7 +29,7 @@ var getForecast = function(lat, lon) {
             for (var i =1; i < 6; i++){
                 
                 var cardDiv = document.createElement('div');
-                cardDiv.setAttribute('class', 'card')
+                cardDiv.setAttribute('class', 'card forecast-card col-md-2')
 
                 var h4 = document.createElement('h4');
                 var unixTimestamp = data.daily[i].dt;
@@ -70,14 +70,6 @@ var getForecast = function(lat, lon) {
     })
 }
 
-
-{/* <div class="card" id="5">
-<h4 class="card-title date">Date</h4>
-<i class="forecast-icon"></i>
-<p class="card-text forecast-temp">Temp:</p>
-<p class="card-text forecast-wind">Wind: </p>
-<p class="card-text forecast-humid">Humidity:</p>
-</div> */}
 
 var getTodayWeather = function(city) {
     searchedCityEl.innerHTML = city;
@@ -127,28 +119,26 @@ loadCities();
 var addCity = function(event) {
     event.preventDefault();
     var cityName =cityInputEl.value.trim();
+    // if (cityName === "") {
+    //     return
+    // }
 
     if (!cities.includes(cityName)){
         var cityEl = document.createElement("button");
-        cityEl.classList = "btn btn-secondary"
+        cityEl.classList = "btn btn-secondary city-but"
         //cityEl.setAttribute("data-cityName", cityName)
         cityEl.textContent = cityName
     
         cityListEl.appendChild(cityEl);
         cities.push(cityName);
         saveCities();
+        }
     
-    }
     
-
     getTodayWeather(cityName);
-
-  
-    
 };
 
-
-
+  
 
 
 var secondaryBtns = document.getElementsByClassName("btn-secondary");
