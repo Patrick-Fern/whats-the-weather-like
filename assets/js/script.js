@@ -41,21 +41,22 @@ var getForecast = function(lat, lon) {
      
 
                 var iTag = document.createElement('img');
+                var weatherIcon = data.daily[i].weather[0].icon
                 iTag.setAttribute('class', 'forecast-icon')
-                iTag.setAttribute('src','http://openweathermap.org/img/w/04d.png')
+                iTag.setAttribute('src','http://openweathermap.org/img/w/'+weatherIcon+'.png')
 
 
                 var temp = document.createElement('p');
                 temp.setAttribute('class', 'card-text')
-                temp.append(`Temp: ${data.daily[i].temp.day}`);
+                temp.append(`Temp: ${data.daily[i].temp.day} *F`);
 
                 var wind = document.createElement('p');
                 wind.setAttribute('class', 'card-text')
-                wind.append("Wind:");
+                wind.append("Wind: " + data.daily[i].wind_speed + " MPH");
 
                 var humid = document.createElement('p');
                 humid.setAttribute('class', 'card-text')
-                humid.append("Humid:");
+                humid.append("Humidity: " + data.daily[i].humidity + "%");
 
                 cardDiv.append(h4);
                 cardDiv.append(iTag);
@@ -157,7 +158,7 @@ for (var i = 0; i < secondaryBtns.length; i++) {
       var savedCity = this.innerHTML;
 
       document.getElementById("5-day-cards").innerHTML = "";
-      
+
       // pass the city name to the getTodayWEather fucntion
       getTodayWeather(savedCity);
     })

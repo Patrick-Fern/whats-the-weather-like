@@ -3,3 +3,9 @@ header {
     color: cornsilk;
     text-align: center;
 }
+
+.forecast-icon {
+    max-height:  35px;
+    max-width: 35px;
+
+}
