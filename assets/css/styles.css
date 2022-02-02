@@ -31,12 +31,7 @@ header {
     flex-wrap: wrap;
 }
 
-.city-but {
-    width: 100%;
-    padding-top: 8x;
-    margin: 1px;
-    justify-content: space-between;
-}
+
 
 button {
     margin: 10px;

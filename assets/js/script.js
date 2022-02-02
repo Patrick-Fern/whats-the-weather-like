@@ -125,7 +125,7 @@ var addCity = function(event) {
 
     if (!cities.includes(cityName)){
         var cityEl = document.createElement("button");
-        cityEl.classList = "btn btn-secondary city-but"
+        cityEl.classList = "btn btn-secondary"
         //cityEl.setAttribute("data-cityName", cityName)
         cityEl.textContent = cityName
     
@@ -134,7 +134,7 @@ var addCity = function(event) {
         saveCities();
         }
     
-    
+    document.getElementById("5-day-cards").innerHTML = "";
     getTodayWeather(cityName);
 };
 
