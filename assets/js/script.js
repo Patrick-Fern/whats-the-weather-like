@@ -7,6 +7,7 @@ var todayTempEl = document.querySelector("#today-temp");
 var todayWindEl = document.querySelector("#today-wind");
 var todayHumidityEl = document.querySelector("#today-humidity");
 var todayUvEl = document.querySelector("#tdy-uv-index"); 
+// var secondaryBtns = document.getElementsByClassName("btn-secondary");
 
 
 
@@ -112,6 +113,18 @@ var loadCities = function() {
 
         }
     }
+    var secondaryBtns = document.getElementsByClassName("btn-secondary");
+    for (var i = 0; i < secondaryBtns.length; i++) {
+        secondaryBtns[i].addEventListener("click", function(){
+          // grab the city name of the button that was clicked
+          var savedCity = this.innerHTML;
+    
+          document.getElementById("5-day-cards").innerHTML = "";
+    
+          // pass the city name to the getTodayWEather fucntion
+          getTodayWeather(savedCity);
+        })
+    }
 };
 
 loadCities();
@@ -132,6 +145,8 @@ var addCity = function(event) {
         cityListEl.appendChild(cityEl);
         cities.push(cityName);
         saveCities();
+        cityListEl.innerHTML = "";
+        loadCities();
         }
     
     document.getElementById("5-day-cards").innerHTML = "";
@@ -141,16 +156,16 @@ var addCity = function(event) {
   
 
 
-var secondaryBtns = document.getElementsByClassName("btn-secondary");
-for (var i = 0; i < secondaryBtns.length; i++) {
-    secondaryBtns[i].addEventListener("click", function(){
-      // grab the city name of the button that was clicked
-      var savedCity = this.innerHTML;
+// var secondaryBtns = document.getElementsByClassName("btn-secondary");
+// for (var i = 0; i < secondaryBtns.length; i++) {
+//     secondaryBtns[i].addEventListener("click", function(){
+//       // grab the city name of the button that was clicked
+//       var savedCity = this.innerHTML;
 
-      document.getElementById("5-day-cards").innerHTML = "";
+//       document.getElementById("5-day-cards").innerHTML = "";
 
-      // pass the city name to the getTodayWEather fucntion
-      getTodayWeather(savedCity);
-    })
-}
+//       // pass the city name to the getTodayWEather fucntion
+//       getTodayWeather(savedCity);
+//     })
+// }
 citySearchButtonEl.addEventListener("click", addCity);
